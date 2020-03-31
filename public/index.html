@@ -5,15 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Firebase Hosting</title>
 
+    <!-- bootstrap4 -->
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <!-- Popper JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+      <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
     <!-- update the version number as needed -->
-    <script defer src="/__/firebase/7.13.1/firebase-app.js"></script>
+    <script src="/__/firebase/7.13.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.13.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/7.13.1/firebase-database.js"></script>
-    <script defer src="/__/firebase/7.13.1/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/7.13.1/firebase-storage.js"></script>
+    
+    <script src="/__/firebase/7.13.1/firebase-auth.js"></script>
+    <script src="/__/firebase/7.13.1/firebase-database.js"></script>
+    <script src="/__/firebase/7.13.1/firebase-messaging.js"></script>
+    <script src="/__/firebase/7.13.1/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+    <script src="/__/firebase/init.js"></script>
 
     <style media="screen">
       body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
@@ -29,13 +41,35 @@
         body { border-top: 16px solid #ffa100; }
       }
     </style>
+
+    <!-- load React -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    
+    <!-- load database -->
+    <script>
+      var database = firebase.database()
+    </script>
+
+    <script type="text/javascript" src="js/getParam.js"></script>
   </head>
-  <body>
+  <body onload="getParam()">
     <div id="message">
       <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+      <h1 id="name_header">Enter your name:</h1>
+      <h1 id="code_header" style="display: none">Enter game code:</h1>
+      <form action="" method="GET" id="name">
+        <input type="text" class="form-control" name="username" id="username"><br>
+        <button type="submit" name="start" onclick="this.form.submitted=this.name;" class="btn btn-primary">Start a game</button>
+        <button type="submit" name="join" onclick="this.form.submitted=this.name;" class="btn btn-secondary">Join a game</button>
+      </form><br>
+      <form action="" method="GET" id="code" style="display: none">
+        <input type="text" class="form-control" name="code" id="code"><br>
+        <button type="submit" name="submit" class="btn btn-primary">Join Game!</button>
+      </form>
+      <h2 id="test"></h2>
+      
+      <!-- <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a> -->
     </div>
     <p id="load">Firebase SDK Loading&hellip;</p>
 
